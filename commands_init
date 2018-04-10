@@ -1,0 +1,14 @@
+touch index.js
+npm init
+npm install webpack
+npm install react
+npm install react-dom
+npm install webpack-notifier
+npm install babel-loader
+npm install babel-preset-es2015
+npm install babel-preset-react
+npm install babel-preset-stage-0
+
+./node_modules/.bin/webpack
+DELETE from config file: "plugins: ['transform-decorators-legacy']"
+./node_modules/.bin/webpack --watch
