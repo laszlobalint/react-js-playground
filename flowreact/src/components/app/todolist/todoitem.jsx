@@ -3,22 +3,18 @@ import React from 'react';
 class ToDoItem extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { items: [], text: '' };
-    this.change = this.change.bind(this);
-    this.submit = this.submit.bind(this);
-    this.state = { isRed: false };
+    this.state = { isDone: false };
   }
-  changeColor () {
-    this.setState({ isRed: !this.state.isRed });
+  changeDone () {
+    this.setState({ isDone: !this.state.isDone });
   }
 
   render () {
     return (
       <div>
-        <h2>To do list</h2>
         <li
-          onClick={this.changeColor.bind(this)}
-          style={{ color: ((this.state.isRed ? 'red' : '')) }}
+          onClick={this.changeDone.bind(this)}
+          style={{ color: ((this.state.isDone ? 'red' : '')) }}
         >{this.props.label}</li>
       </div>
     );

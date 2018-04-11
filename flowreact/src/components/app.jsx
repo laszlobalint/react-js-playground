@@ -1,14 +1,15 @@
 import React from 'react';
-import ToDoItem from './todolist/todoitem';
+import ToDoList from './app/todolist';
+import CreateItem from './app/createitem';
 
 class App extends React.Component {
   render () {
     return (
-      <ul className='todo-list'>
-        <ToDoItem label='First task' />
-        <ToDoItem label='Second task' />
-        <ToDoItem label='Third task' />
-      </ul>
+      <div className='toDoListWrapper'>
+        <h2>To do list</h2>
+        <ToDoList />
+        <CreateItem />
+      </div>
     );
   }
 }
