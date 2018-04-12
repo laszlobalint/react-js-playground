@@ -19,7 +19,7 @@ class CreateItemForm extends React.Component {
     return (
       <form>
         <input type='text' value={this.state.inputValue} onChange={this.changeInputValue.bind(this)} />
-        <button type='button' onClick={this.submit.bind(this)}>Submit</button>
+        <button type='button' class='btn btn-success' onClick={this.submit.bind(this)}>Submit</button>
         <br />
         {this.state.inputValue}
       </form>

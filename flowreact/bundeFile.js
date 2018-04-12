@@ -19493,7 +19493,9 @@ var App = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-    _this.state = { todos: [{ label: 'one' }, { label: 'two' }, { label: 'three' }, { label: 'four' }, { label: 'five' }] };
+    _this.state = {
+      todos: [{ label: 'one' }, { label: 'two' }, { label: 'three' }, { label: 'four' }, { label: 'five' }]
+    };
     return _this;
   }
 
@@ -19513,12 +19515,64 @@ var App = function (_React$Component) {
         'div',
         { className: 'toDoListWrapper' },
         _react2.default.createElement(
-          'h2',
-          null,
-          'To do list'
-        ),
-        _react2.default.createElement(_todolist2.default, { todos: this.state.todos }),
-        _react2.default.createElement(_createitem2.default, { submit: this.submit.bind(this) })
+          'div',
+          { 'class': 'container' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'React practice'
+          ),
+          _react2.default.createElement(
+            'div',
+            { 'class': 'panel panel-default' },
+            _react2.default.createElement(
+              'div',
+              { 'class': 'panel-body' },
+              'My To Do List'
+            )
+          ),
+          _react2.default.createElement(
+            'table',
+            { 'class': 'table table-bordered' },
+            _react2.default.createElement(
+              'thead',
+              null,
+              _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Task'
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'State'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'tbody',
+              null,
+              _react2.default.createElement(
+                'tr',
+                null,
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  _react2.default.createElement(_todolist2.default, { todos: this.state.todos }),
+                  _react2.default.createElement(_createitem2.default, { submit: this.submit.bind(this) })
+                ),
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  _react2.default.createElement('input', { type: 'checkbox' })
+                )
+              )
+            )
+          )
+        )
       );
     }
   }]);
@@ -19639,8 +19693,7 @@ var ToDoItem = function (_React$Component) {
             onClick: this.changeDone.bind(this),
             style: { color: this.state.isDone ? 'red' : '' }
           },
-          this.props.label,
-          _react2.default.createElement('input', { type: 'checkbox' })
+          this.props.label
         )
       );
     }
@@ -19770,7 +19823,7 @@ var CreateItemForm = function (_React$Component) {
         _react2.default.createElement('input', { type: 'text', value: this.state.inputValue, onChange: this.changeInputValue.bind(this) }),
         _react2.default.createElement(
           'button',
-          { type: 'button', onClick: this.submit.bind(this) },
+          { type: 'button', 'class': 'btn btn-success', onClick: this.submit.bind(this) },
           'Submit'
         ),
         _react2.default.createElement('br', null),

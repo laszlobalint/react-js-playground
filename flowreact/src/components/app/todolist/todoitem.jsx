@@ -16,7 +16,6 @@ class ToDoItem extends React.Component {
           onClick={this.changeDone.bind(this)}
           style={{ color: ((this.state.isDone ? 'red' : '')) }}
         >{this.props.label}
-          <input type='checkbox' />
         </li>
       </div>
     );
