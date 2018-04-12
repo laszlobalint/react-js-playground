@@ -28,8 +28,5 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [
-    new WebpackNotifierPlugin({ alwaysNotify: true })
-  ]
+  }
 };

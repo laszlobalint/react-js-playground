@@ -9,6 +9,7 @@ class CreateItemForm extends React.Component {
   }
   submit () {
     console.log('Submit was successful!');
+    this.props.submit(this.state.inputValue);
   }
   changeInputValue (element) {
     this.setState({inputValue: element.target.value});
@@ -18,7 +19,8 @@ class CreateItemForm extends React.Component {
     return (
       <form>
         <input type='text' value={this.state.inputValue} onChange={this.changeInputValue.bind(this)} />
-        <button type='button' onClick={this.submit}>Submit</button>
+        <button type='button' onClick={this.submit.bind(this)}>Submit</button>
+        <br />
         {this.state.inputValue}
       </form>
     );
