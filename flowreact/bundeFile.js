@@ -19500,6 +19500,21 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
+    key: 'delete',
+    value: function _delete(label) {
+      console.log(label);
+      var todos = this.state.todos;
+      var i = 0;
+      while (i < todos.length && todos[i].label !== label) {
+        i++;
+      }
+      console.log(i);
+      if (i < todos.length) {
+        todos.splice(i, 1);
+        this.setState({ todos: todos });
+      }
+    }
+  }, {
     key: 'submit',
     value: function submit(inputValue) {
       console.log(inputValue);
@@ -19561,13 +19576,8 @@ var App = function (_React$Component) {
                 _react2.default.createElement(
                   'th',
                   null,
-                  _react2.default.createElement(_todolist2.default, { todos: this.state.todos }),
+                  _react2.default.createElement(_todolist2.default, { todos: this.state.todos, 'delete': this.delete.bind(this) }),
                   _react2.default.createElement(_createitem2.default, { submit: this.submit.bind(this) })
-                ),
-                _react2.default.createElement(
-                  'th',
-                  null,
-                  _react2.default.createElement('input', { type: 'checkbox' })
                 )
               )
             )
@@ -19621,6 +19631,12 @@ var ToDoList = function (_React$Component) {
   }
 
   _createClass(ToDoList, [{
+    key: 'delete',
+    value: function _delete(label) {
+      console.log(label);
+      this.props.delete(label);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var todos = this.props.todos.map(function (element) {
@@ -19677,9 +19693,18 @@ var ToDoItem = function (_React$Component) {
   }
 
   _createClass(ToDoItem, [{
+    key: 'delete',
+    value: function _delete() {
+      console.log('Delete was successful!', this.state.isDone);
+      this.props.delete(this.props.todo.label);
+    }
+  }, {
     key: 'changeDone',
     value: function changeDone() {
       this.setState({ isDone: !this.state.isDone });
+      if (this.state.isDone === true) {
+        this.delete();
+      }
     }
   }, {
     key: 'render',
@@ -19689,11 +19714,15 @@ var ToDoItem = function (_React$Component) {
         null,
         _react2.default.createElement(
           'li',
-          {
-            onClick: this.changeDone.bind(this),
+          { onClick: this.changeDone.bind(this),
             style: { color: this.state.isDone ? 'red' : '' }
           },
-          this.props.label
+          this.props.label,
+          _react2.default.createElement(
+            'button',
+            { type: 'button', onClick: this.delete.bind(this) },
+            'Delete'
+          )
         )
       );
     }

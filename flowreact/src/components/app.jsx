@@ -16,6 +16,20 @@ class App extends React.Component {
     };
   }
 
+  delete (label) {
+    console.log(label);
+    let todos = this.state.todos;
+    let i = 0;
+    while (i < todos.length && todos[i].label !== label) {
+      i++;
+    }
+    console.log(i);
+    if (i < todos.length) {
+      todos.splice(i, 1);
+      this.setState({ todos: todos });
+    }
+  }
+
   submit (inputValue) {
     console.log(inputValue);
     let todos = this.state.todos;
@@ -42,9 +56,8 @@ class App extends React.Component {
             </thead>
             <tbody>
               <tr>
-                <th><ToDoList todos={this.state.todos} />
+                <th><ToDoList todos={this.state.todos} delete={this.delete.bind(this)} />
                   <CreateItem submit={this.submit.bind(this)} /></th>
-                <th><input type='checkbox' /></th>
               </tr>
             </tbody>
           </table>
