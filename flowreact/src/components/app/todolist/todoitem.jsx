@@ -14,18 +14,14 @@ class ToDoItem extends React.Component {
   changeDone () {
     this.setState({ isDone: !this.state.isDone });
     if (this.state.isDone === true) {
-      this.delete();
     }
   }
 
   render () {
     return (
       <div>
-        <li onClick={this.changeDone.bind(this)}
-          style={{ color: ((this.state.isDone ? 'red' : '')) }}
-        >{this.props.label}
-          <button type='button' onClick={this.delete.bind(this)}>Delete</button>
-        </li>
+        <li onClick={this.changeDone.bind(this)} style={{ color: ((this.state.isDone ? 'green' : 'red')) }}>{this.props.todo.label}
+          <button onClick={this.delete.bind(this)}>Delete</button></li>
       </div>
     );
   }

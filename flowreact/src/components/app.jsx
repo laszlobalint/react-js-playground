@@ -26,7 +26,7 @@ class App extends React.Component {
     console.log(i);
     if (i < todos.length) {
       todos.splice(i, 1);
-      this.setState({ todos: todos });
+      this.setState({ todos: this.state.todos });
     }
   }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
     console.log(inputValue);
     let todos = this.state.todos;
     todos.push({ label: inputValue });
-    this.setState({ todos: todos });
+    this.setState({ todos: this.state.todos });
   }
 
   render () {
@@ -46,19 +46,18 @@ class App extends React.Component {
           <div class='panel panel-default'>
             <div class='panel-body'>My To Do List</div>
           </div>
-
           <table class='table table-bordered'>
             <thead>
               <tr>
                 <th>Task</th>
-                <th>State</th>
+                <th>Comments</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <div>
                 <th><ToDoList todos={this.state.todos} delete={this.delete.bind(this)} />
                   <CreateItem submit={this.submit.bind(this)} /></th>
-              </tr>
+              </div>
             </tbody>
           </table>
         </div>

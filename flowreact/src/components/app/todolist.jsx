@@ -7,8 +7,8 @@ class ToDoList extends React.Component {
     this.props.delete(label);
   }
   render () {
-    let todos = this.props.todos.map(element => {
-      return <ToDoItem label={element.label} key={element.label} />;
+    let todos = this.props.todos.map(todo => {
+      return <ToDoItem todo={todo} key={todo} delete={this.delete.bind(this)} />;
     });
     return (
       <ul className='todo-list'>

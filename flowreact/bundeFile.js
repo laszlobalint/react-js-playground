@@ -19511,7 +19511,7 @@ var App = function (_React$Component) {
       console.log(i);
       if (i < todos.length) {
         todos.splice(i, 1);
-        this.setState({ todos: todos });
+        this.setState({ todos: this.state.todos });
       }
     }
   }, {
@@ -19520,7 +19520,7 @@ var App = function (_React$Component) {
       console.log(inputValue);
       var todos = this.state.todos;
       todos.push({ label: inputValue });
-      this.setState({ todos: todos });
+      this.setState({ todos: this.state.todos });
     }
   }, {
     key: 'render',
@@ -19563,7 +19563,7 @@ var App = function (_React$Component) {
                 _react2.default.createElement(
                   'th',
                   null,
-                  'State'
+                  'Comments'
                 )
               )
             ),
@@ -19571,7 +19571,7 @@ var App = function (_React$Component) {
               'tbody',
               null,
               _react2.default.createElement(
-                'tr',
+                'div',
                 null,
                 _react2.default.createElement(
                   'th',
@@ -19639,8 +19639,10 @@ var ToDoList = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var todos = this.props.todos.map(function (element) {
-        return _react2.default.createElement(_todoitem2.default, { label: element.label, key: element.label });
+      var _this2 = this;
+
+      var todos = this.props.todos.map(function (todo) {
+        return _react2.default.createElement(_todoitem2.default, { todo: todo, key: todo, 'delete': _this2.delete.bind(_this2) });
       });
       return _react2.default.createElement(
         'ul',
@@ -19702,9 +19704,7 @@ var ToDoItem = function (_React$Component) {
     key: 'changeDone',
     value: function changeDone() {
       this.setState({ isDone: !this.state.isDone });
-      if (this.state.isDone === true) {
-        this.delete();
-      }
+      if (this.state.isDone === true) {}
     }
   }, {
     key: 'render',
@@ -19714,13 +19714,11 @@ var ToDoItem = function (_React$Component) {
         null,
         _react2.default.createElement(
           'li',
-          { onClick: this.changeDone.bind(this),
-            style: { color: this.state.isDone ? 'red' : '' }
-          },
-          this.props.label,
+          { onClick: this.changeDone.bind(this), style: { color: this.state.isDone ? 'green' : 'red' } },
+          this.props.todo.label,
           _react2.default.createElement(
             'button',
-            { type: 'button', onClick: this.delete.bind(this) },
+            { onClick: this.delete.bind(this) },
             'Delete'
           )
         )
@@ -19849,7 +19847,7 @@ var CreateItemForm = function (_React$Component) {
       return _react2.default.createElement(
         'form',
         null,
-        _react2.default.createElement('input', { type: 'text', value: this.state.inputValue, onChange: this.changeInputValue.bind(this) }),
+        _react2.default.createElement('input', { type: 'text', placeholder: 'What do I need to do?', value: this.state.inputValue, onChange: this.changeInputValue.bind(this) }),
         _react2.default.createElement(
           'button',
           { type: 'button', 'class': 'btn btn-success', onClick: this.submit.bind(this) },

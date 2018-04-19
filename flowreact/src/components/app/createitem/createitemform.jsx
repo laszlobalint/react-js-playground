@@ -18,7 +18,7 @@ class CreateItemForm extends React.Component {
   render () {
     return (
       <form>
-        <input type='text' value={this.state.inputValue} onChange={this.changeInputValue.bind(this)} />
+        <input type='text' placeholder='What do I need to do?' value={this.state.inputValue} onChange={this.changeInputValue.bind(this)} />
         <button type='button' class='btn btn-success' onClick={this.submit.bind(this)}>Submit</button>
         <br />
         {this.state.inputValue}
