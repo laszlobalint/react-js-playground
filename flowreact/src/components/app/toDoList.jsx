@@ -1,11 +1,12 @@
 import React from 'react';
-import ToDoItem from './todolist/todoitem';
+import ToDoItem from './toDoList/toDoItem';
 
 class ToDoList extends React.Component {
   delete (label) {
     console.log(label);
     this.props.delete(label);
   }
+
   render () {
     let todos = this.props.todos.map(todo => {
       return <ToDoItem todo={todo} key={todo} delete={this.delete.bind(this)} />;

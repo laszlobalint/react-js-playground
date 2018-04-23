@@ -7,10 +7,13 @@ class CreateItemForm extends React.Component {
       inputValue: ''
     };
   }
+
   submit () {
     console.log('Submit was successful!');
     this.props.submit(this.state.inputValue);
+    this.setState({inputValue: ''});
   }
+
   changeInputValue (element) {
     this.setState({inputValue: element.target.value});
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateItemForm from './createitem/createitemform';
+import CreateItemForm from './createItem/createItemForm';
 
 class CreateItem extends React.Component {
   submit (inputValue) {

@@ -1,17 +1,17 @@
 import React from 'react';
-import ToDoList from './app/todolist';
-import CreateItem from './app/createitem';
+import ToDoList from './app/toDoList';
+import CreateItem from './app/createItem';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       todos: [
-        { label: 'one' },
-        { label: 'two' },
-        { label: 'three' },
-        { label: 'four' },
-        { label: 'five' }
+        { label: 'First task to do' },
+        { label: 'Secondd task to do' },
+        { label: 'Third task to do' },
+        { label: 'Fourth task to do' },
+        { label: 'Fifth task to do' }
       ]
     };
   }
@@ -26,7 +26,7 @@ class App extends React.Component {
     console.log(i);
     if (i < todos.length) {
       todos.splice(i, 1);
-      this.setState({ todos: this.state.todos });
+      this.setState({ todos: todos });
     }
   }
 
@@ -54,10 +54,10 @@ class App extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <div>
-                <th><ToDoList todos={this.state.todos} delete={this.delete.bind(this)} />
-                  <CreateItem submit={this.submit.bind(this)} /></th>
-              </div>
+              <tr>
+                <ToDoList todos={this.state.todos} delete={this.delete.bind(this)} />
+                <CreateItem submit={this.submit.bind(this)} />
+              </tr>
             </tbody>
           </table>
         </div>
