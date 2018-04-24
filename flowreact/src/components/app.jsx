@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {
       todos: [
         { label: 'First task to do' },
-        { label: 'Secondd task to do' },
+        { label: 'Second task to do' },
         { label: 'Third task to do' },
         { label: 'Fourth task to do' },
         { label: 'Fifth task to do' }

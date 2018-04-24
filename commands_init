@@ -12,3 +12,8 @@ npm install babel-preset-stage-0
 ./node_modules/.bin/webpack
 DELETE from config file: "plugins: ['transform-decorators-legacy']"
 ./node_modules/.bin/webpack --watch
+
+npm install express
+npm install express-handelbars
+npm i -g npm
+npm install react-router

@@ -19469,11 +19469,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _toDoList = __webpack_require__(30);
+var _toDoList = __webpack_require__(26);
 
 var _toDoList2 = _interopRequireDefault(_toDoList);
 
-var _createItem = __webpack_require__(31);
+var _createItem = __webpack_require__(28);
 
 var _createItem2 = _interopRequireDefault(_createItem);
 
@@ -19589,11 +19589,7 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19609,7 +19605,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _toDoItem = __webpack_require__(33);
+var _toDoItem = __webpack_require__(27);
 
 var _toDoItem2 = _interopRequireDefault(_toDoItem);
 
@@ -19658,141 +19654,7 @@ var ToDoList = function (_React$Component) {
 exports.default = ToDoList;
 
 /***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _createItemForm = __webpack_require__(32);
-
-var _createItemForm2 = _interopRequireDefault(_createItemForm);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CreateItem = function (_React$Component) {
-  _inherits(CreateItem, _React$Component);
-
-  function CreateItem() {
-    _classCallCheck(this, CreateItem);
-
-    return _possibleConstructorReturn(this, (CreateItem.__proto__ || Object.getPrototypeOf(CreateItem)).apply(this, arguments));
-  }
-
-  _createClass(CreateItem, [{
-    key: 'submit',
-    value: function submit(inputValue) {
-      console.log(inputValue);
-      this.props.submit(inputValue);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'createItemWrapper' },
-        _react2.default.createElement(_createItemForm2.default, { submit: this.submit.bind(this) })
-      );
-    }
-  }]);
-
-  return CreateItem;
-}(_react2.default.Component);
-
-exports.default = CreateItem;
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CreateItemForm = function (_React$Component) {
-  _inherits(CreateItemForm, _React$Component);
-
-  function CreateItemForm(props) {
-    _classCallCheck(this, CreateItemForm);
-
-    var _this = _possibleConstructorReturn(this, (CreateItemForm.__proto__ || Object.getPrototypeOf(CreateItemForm)).call(this, props));
-
-    _this.state = {
-      inputValue: ''
-    };
-    return _this;
-  }
-
-  _createClass(CreateItemForm, [{
-    key: 'submit',
-    value: function submit() {
-      console.log('Submit was successful!');
-      this.props.submit(this.state.inputValue);
-      this.setState({ inputValue: '' });
-    }
-  }, {
-    key: 'changeInputValue',
-    value: function changeInputValue(element) {
-      this.setState({ inputValue: element.target.value });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'form',
-        null,
-        _react2.default.createElement('input', { type: 'text', placeholder: 'What do I need to do?', value: this.state.inputValue, onChange: this.changeInputValue.bind(this) }),
-        _react2.default.createElement(
-          'button',
-          { type: 'button', 'class': 'btn btn-success', onClick: this.submit.bind(this) },
-          'Submit'
-        ),
-        _react2.default.createElement('br', null),
-        this.state.inputValue
-      );
-    }
-  }]);
-
-  return CreateItemForm;
-}(_react2.default.Component);
-
-exports.default = CreateItemForm;
-
-/***/ }),
-/* 33 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19864,6 +19726,140 @@ var ToDoItem = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ToDoItem;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _createItemForm = __webpack_require__(29);
+
+var _createItemForm2 = _interopRequireDefault(_createItemForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CreateItem = function (_React$Component) {
+  _inherits(CreateItem, _React$Component);
+
+  function CreateItem() {
+    _classCallCheck(this, CreateItem);
+
+    return _possibleConstructorReturn(this, (CreateItem.__proto__ || Object.getPrototypeOf(CreateItem)).apply(this, arguments));
+  }
+
+  _createClass(CreateItem, [{
+    key: 'submit',
+    value: function submit(inputValue) {
+      console.log(inputValue);
+      this.props.submit(inputValue);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'createItemWrapper' },
+        _react2.default.createElement(_createItemForm2.default, { submit: this.submit.bind(this) })
+      );
+    }
+  }]);
+
+  return CreateItem;
+}(_react2.default.Component);
+
+exports.default = CreateItem;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CreateItemForm = function (_React$Component) {
+  _inherits(CreateItemForm, _React$Component);
+
+  function CreateItemForm(props) {
+    _classCallCheck(this, CreateItemForm);
+
+    var _this = _possibleConstructorReturn(this, (CreateItemForm.__proto__ || Object.getPrototypeOf(CreateItemForm)).call(this, props));
+
+    _this.state = {
+      inputValue: ''
+    };
+    return _this;
+  }
+
+  _createClass(CreateItemForm, [{
+    key: 'submit',
+    value: function submit() {
+      console.log('Submit was successful!');
+      this.props.submit(this.state.inputValue);
+      this.setState({ inputValue: '' });
+    }
+  }, {
+    key: 'changeInputValue',
+    value: function changeInputValue(element) {
+      this.setState({ inputValue: element.target.value });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'form',
+        null,
+        _react2.default.createElement('input', { type: 'text', placeholder: 'What do I need to do?', value: this.state.inputValue, onChange: this.changeInputValue.bind(this) }),
+        _react2.default.createElement(
+          'button',
+          { type: 'button', 'class': 'btn btn-success', onClick: this.submit.bind(this) },
+          'Submit'
+        ),
+        _react2.default.createElement('br', null),
+        this.state.inputValue
+      );
+    }
+  }]);
+
+  return CreateItemForm;
+}(_react2.default.Component);
+
+exports.default = CreateItemForm;
 
 /***/ })
 /******/ ]);
