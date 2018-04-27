@@ -1,0 +1,63 @@
+body {
+  font-family: 'Dancing Script', cursive;
+}
+
+.my-jumbotron {
+  padding: 150px;
+  background-image: url('../css/To_Do_List.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar-default {
+  background-color: #f0ad4e;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+#my-nav-item {
+  color: white;
+}
+
+#box {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #f0ad4e;
+}
+
+.list-group-item {
+  margin: auto;
+  width: 500px;
+  padding-left: 35px;
+  font-size: 35px;
+}
+
+.list-group-item input {
+  margin-right: 25px;
+}
+
+.list-group-item:hover {
+  background-color: #f0ad4e;
+}
+
+form {
+  text-align: center;
+}
+
+.my-input-field {
+  width: 500px;
+  height: 40px;
+  margin: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.modal-footer {
+  background-color: #f0ad4e;
+  color: white;
+  font-size: 25px;
+}
