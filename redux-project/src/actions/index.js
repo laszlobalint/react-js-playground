@@ -8,3 +8,13 @@ export function movieslist () {
     ]
   };
 }
+
+export function directorlist () {
+  return {
+    type: 'DIR_LIST',
+    payload: [
+      {id: 1, name: 'Tarantino'},
+      {id: 2, name: 'Scorcese'}
+    ]
+  };
+}
