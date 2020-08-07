@@ -5,6 +5,11 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.elementRef = React.createRef();
+  }
+
   state = {
     persons: [
       { id: '1', name: 'Max', age: 28 },
@@ -14,6 +19,10 @@ class App extends Component {
     showPersons: false,
     toggleCounter: 0,
   };
+
+  componentDidMount() {
+    this.elementRef.current.focus();
+  }
 
   togglePersonsHandler = () => {
     this.setState((prevState, props) => {
@@ -45,6 +54,7 @@ class App extends Component {
 
     return (
       <WithClass classes={classes.App}>
+        <input ref={this.elementRef} type="number" />
         <Cockpit
           appTitle={this.props.appTitle}
           showPersons={this.state.showPersons}

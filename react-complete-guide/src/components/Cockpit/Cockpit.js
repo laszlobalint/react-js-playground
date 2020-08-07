@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+  const toggleButtonRef = useRef(null);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      alert('Fetched data!');
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
+    toggleButtonRef.current.click();
+    return () => {};
   }, []);
 
   const btnClasses = [classes.Button];
@@ -21,7 +19,7 @@ const Cockpit = (props) => {
     <div>
       <h1>{props.appTitle}</h1>
       <p className={assignedClasses.join(' ')}>A working application</p>
-      <button className={btnClasses.join(' ')} onClick={props.clicked}>
+      <button ref={toggleButtonRef} className={btnClasses.join(' ')} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
