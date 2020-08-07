@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
+import WithClass from '../hoc/WithClass';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 
@@ -10,12 +11,14 @@ class App extends Component {
       { id: '2', name: 'Manu', age: 29 },
       { id: '3', name: 'Jane', age: 40 },
     ],
-    otherState: 'Some other state',
     showPersons: false,
+    toggleCounter: 0,
   };
 
   togglePersonsHandler = () => {
-    this.setState({ showPersons: !this.state.showPersons });
+    this.setState((prevState, props) => {
+      return { showPersons: !this.state.showPersons, toggleCounter: ++prevState.toggleCounter };
+    });
   };
 
   personChangedHandler = (event, id) => {
@@ -41,15 +44,15 @@ class App extends Component {
       persons = <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.personChangedHandler} />;
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <Cockpit
           appTitle={this.props.appTitle}
           showPersons={this.state.showPersons}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler}
         />
         {persons}
-      </div>
+      </WithClass>
     );
   }
 }
