@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
+import AuthContext from '../context/auth-context';
 import WithClass from '../hoc/WithClass';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
@@ -18,11 +19,16 @@ class App extends Component {
     ],
     showPersons: false,
     toggleCounter: 0,
+    authenticated: false,
   };
 
   componentDidMount() {
     this.elementRef.current.focus();
   }
+
+  loginHandler = () => {
+    this.setState({ authenticated: !this.state.authenticated });
+  };
 
   togglePersonsHandler = () => {
     this.setState((prevState, props) => {
@@ -55,13 +61,15 @@ class App extends Component {
     return (
       <WithClass classes={classes.App}>
         <input ref={this.elementRef} type="number" />
-        <Cockpit
-          appTitle={this.props.appTitle}
-          showPersons={this.state.showPersons}
-          personsLength={this.state.persons.length}
-          clicked={this.togglePersonsHandler}
-        />
-        {persons}
+        <AuthContext.Provider value={{ authenticated: this.state.authenticated, login: this.loginHandler }}>
+          <Cockpit
+            appTitle={this.props.appTitle}
+            showPersons={this.state.showPersons}
+            personsLength={this.state.persons.length}
+            clicked={this.togglePersonsHandler}
+          />
+          {persons}
+        </AuthContext.Provider>
       </WithClass>
     );
   }
