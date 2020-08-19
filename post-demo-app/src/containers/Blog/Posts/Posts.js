@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
-import './Blog.css';
+import './Posts.css';
+import Post from '../../../components/Post/Post';
 
-class Blog extends Component {
+class Posts extends Component {
   state = {
     posts: [],
     selectedPostId: null,
@@ -50,19 +48,8 @@ class Blog extends Component {
         return <Post key={post.id} author={post.author} title={post.title} clicked={() => this.postSelectedHandler(post.id)} />;
       });
     }
-
-    return (
-      <div>
-        <section className="Posts">{posts}</section>
-        <section>
-          <FullPost id={this.state.selectedPostId} onDeletePost={this.postDeletedHandler} />
-        </section>
-        <section>
-          <NewPost />
-        </section>
-      </div>
-    );
+    return <section className="Posts">{posts}</section>;
   }
 }
 
-export default Blog;
+export default Posts;
