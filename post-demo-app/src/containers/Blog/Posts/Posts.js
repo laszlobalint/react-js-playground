@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Posts.css';
 import Post from '../../../components/Post/Post';
+import { Link, Route } from 'react-router-dom';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
   state = {
     posts: [],
-    selectedPostId: null,
     error: false,
   };
 
@@ -27,28 +28,40 @@ class Posts extends Component {
       });
   }
 
-  postSelectedHandler = (selectedPostId) => {
-    this.setState({ selectedPostId });
+  postSelectedHandler = (id) => {
+    this.props.history.push('/' + id);
   };
 
-  postDeletedHandler = () => {
+  postDeletedHandler = (id) => {
+    console.log(id);
     let posts = this.state.posts.filter((p) => {
-      return p.id !== this.state.selectedPostId;
+      return p.id !== id;
     });
-    this.setState({
-      posts,
-      selectedPostId: null,
-    });
+    this.setState({ posts });
+    this.props.history.push('/posts');
   };
 
   render() {
-    let posts = <span style={{ textAlign: 'center' }}>Someting went wrong!</span>;
+    let posts = <span style={{ textAlign: 'center' }}>Something went wrong!</span>;
     if (!this.state.error) {
       posts = this.state.posts.map((post) => {
-        return <Post key={post.id} author={post.author} title={post.title} clicked={() => this.postSelectedHandler(post.id)} />;
+        return (
+          <Link key={post.id} to={this.props.match.url + '/' + post.id}>
+            <Post author={post.author} title={post.title} clicked={() => this.postSelectedHandler(post.id)} />
+          </Link>
+        );
       });
     }
-    return <section className="Posts">{posts}</section>;
+    return (
+      <div>
+        <section className="Posts">{posts}</section>
+        <Route
+          path={this.props.match.url + '/:id'}
+          exact
+          render={(props) => <FullPost {...props} onDeletePost={(id) => this.postDeletedHandler(id)} />}
+        />
+      </div>
+    );
   }
 }
 

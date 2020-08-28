@@ -16,10 +16,16 @@ class NewPost extends Component {
         body: this.state.content,
         author: this.state.author,
       })
-      .then((response) => alert('Post was sent!'));
+      .then((response) => {
+        alert('Post was sent!');
+        this.props.history.replace('/posts');
+        // this.setState({ submitted: !this.state.submitted });
+      });
   };
 
   render() {
+    // let redirect = null;
+    // if (this.state.submitted) redirect = <Redirect to="/posts" />;
     return (
       <div className="NewPost">
         <h1>Add a Post</h1>

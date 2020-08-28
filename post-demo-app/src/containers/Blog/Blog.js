@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link as NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+import AsyncComponent from '../../hoc/asyncComponent';
+
+const AsyncNewPost = AsyncComponent(() => import('./NewPost/NewPost'));
 
 class Blog extends Component {
   render() {
@@ -12,18 +14,22 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <NavLink to="/" exact>
-                  Home
+                <NavLink to="/posts" exact="true">
+                  Posts
                 </NavLink>
               </li>
               <li>
-                <NavLink to={{ pathname: '/new-post' }}>New Post</NavLink>
+                <NavLink to={{ pathname: '/new-post', hash: '#submit', search: '?quick-submit=true' }}>New Post</NavLink>
               </li>
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={Posts} />
-        <Route path="/new-post" component={NewPost} />
+        <Switch>
+          <Route path="/posts" component={Posts} />
+          <Route path="/new-post" component={AsyncNewPost} />
+          <Redirect from="/" to="/posts" />
+          <Route render={() => <h1>Page not found! (404)</h1>} />
+        </Switch>
       </div>
     );
   }
