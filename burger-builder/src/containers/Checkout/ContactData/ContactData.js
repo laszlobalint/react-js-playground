@@ -28,6 +28,7 @@ class ContactData extends Component {
           type,
           placeholder,
         },
+        value: '',
       };
     } else {
       return {
@@ -46,16 +47,14 @@ class ContactData extends Component {
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
+    const formData = {};
+    for (let inputId in this.state.orderForm) {
+      formData[inputId] = this.state.orderForm[inputId].value;
+    }
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.totalPrice,
-      customer: {
-        name: this.state.name,
-        address: {
-          street: this.state.street,
-          postalCode: this.state.postalCode,
-        },
-      },
+      orderData: formData,
     };
     axios
       .post('/orders.json', order)
@@ -67,23 +66,30 @@ class ContactData extends Component {
       });
   };
 
+  inputChangedHandler = (event, inputId) => {
+    const updatedOrderForm = { ...this.state.orderForm };
+    const updatedFormElement = { ...updatedOrderForm[inputId] };
+    updatedFormElement.value = event.target.value;
+    updatedOrderForm[inputId] = updatedFormElement;
+    this.setState({ orderForm: updatedOrderForm });
+  };
+
   render() {
     const formElements = [];
     for (let key in this.state.orderForm) formElements.push({ id: key, config: this.state.orderForm[key] });
 
     let form = (
-      <form>
+      <form onSubmit={this.orderHandler}>
         {formElements.map((element) => (
           <Input
             key={element.id}
             elementType={element.config.elementType}
             elementConfig={element.config.elementConfig}
             value={element.config.value}
+            changed={(event) => this.inputChangedHandler(event, element.id)}
           />
         ))}
-        <Button btnType="Success" clicked={this.orderHandler}>
-          ORDER
-        </Button>
+        <Button btnType="Success">ORDER</Button>
       </form>
     );
     if (this.state.loading) form = <Spinner />;
