@@ -19,12 +19,12 @@ const BuildControls = (props) => (
       <BuildControl
         key={ctrl.label}
         label={ctrl.label}
-        moreClicked={() => props.ingredientAdded(ctrl.type, '+')}
-        lessClicked={() => props.ingredientRemoved(ctrl.type, '-')}
+        moreClicked={() => props.ingredientAdded(ctrl.type)}
+        lessClicked={() => props.ingredientRemoved(ctrl.type)}
         disabled={props.disabled[ctrl.type]}
       />
     ))}
-    <button className={classes.OrderButton} disabled={!props.purcasable} onClick={props.orderClicked}>
+    <button className={classes.OrderButton} disabled={!props.purchasable} onClick={props.orderClicked}>
       ORDER NOW
     </button>
   </div>
