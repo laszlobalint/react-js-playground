@@ -52,7 +52,7 @@ class BurgerBuilder extends Component {
       orderSummary = (
         <OrderSummary
           ingredients={this.props.ingredients}
-          price={this.props.totalPrice}
+          totalPrice={this.props.totalPrice}
           purchaseCancelled={this.purchaseHandler}
           purchaseContinued={this.purchaseContinueHandler}
         />
@@ -63,7 +63,7 @@ class BurgerBuilder extends Component {
           <Burger ingredients={this.props.ingredients} />
           <BuildControls
             disabled={disabledInfo}
-            price={this.props.totalPrice}
+            totalPrice={this.props.totalPrice}
             purchasable={this.updatePurchaseState()}
             ingredientAdded={this.props.onAddedIngredient}
             ingredientRemoved={this.props.onRemovedIngredient}

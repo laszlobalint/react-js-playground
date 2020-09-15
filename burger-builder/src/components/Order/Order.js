@@ -22,7 +22,7 @@ const Order = (props) => {
     <div className={classes.Order}>
       {ingredientOutput}
       <p>
-        Price: <strong>${Number.parseFloat(props.price).toFixed(2)}</strong>
+        Price: <strong>${props.totalPrice}</strong>
       </p>
     </div>
   );

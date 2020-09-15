@@ -7,6 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import WithErrorHandler from '../../../hoc/WithErrorHandler/WithErrorHandler';
 import * as actions from '../../../store/actions';
+import axios from '../../../axios-orders';
 
 class ContactData extends Component {
   state = {
@@ -165,4 +166,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(ContactData));
+export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(ContactData, axios));
