@@ -1,4 +1,3 @@
-/*eslint-disable no-eval */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
