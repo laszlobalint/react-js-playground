@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { mapErrorCodeToMessage } from '../utility';
 
 import * as actionTypes from './actionTypes';
 
@@ -8,17 +9,32 @@ export const authenticate = () => {
   };
 };
 
-export const authenticateSuccess = (authData) => {
+export const authenticateSuccess = (token, userId) => {
   return {
     type: actionTypes.AUTHENTICATE_SUCCESS,
-    authData,
+    token,
+    userId,
   };
 };
 
 export const authenticateFailure = (error) => {
   return {
     type: actionTypes.AUTHENTICATE_FAILURE,
-    error,
+    error: mapErrorCodeToMessage(error.message),
+  };
+};
+
+export const logout = () => {
+  return {
+    type: actionTypes.AUTHENTICATE_LOGOUT,
+  };
+};
+
+export const checkAuthTimeout = (expirationTime) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, expirationTime * 1000);
   };
 };
 
@@ -35,10 +51,11 @@ export const auth = (email, password, isSignup) => {
     axios
       .post(url, authData)
       .then((response) => {
-        dispatch(authenticateSuccess(response.data));
+        dispatch(authenticateSuccess(response.data.idToken, response.data.localId));
+        dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch((error) => {
-        dispatch(authenticateFailure(error));
+        dispatch(authenticateFailure(error.response.data.error));
       });
   };
 };
