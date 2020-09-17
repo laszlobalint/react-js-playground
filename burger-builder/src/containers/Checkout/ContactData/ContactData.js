@@ -7,7 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import WithErrorHandler from '../../../hoc/WithErrorHandler/WithErrorHandler';
 import * as actions from '../../../store/actions';
-import axios from '../../../axios-orders';
+import axios from '../../../axios';
 import { updateObject, checkValidity } from '../../../shared/utility';
 
 class ContactData extends Component {
