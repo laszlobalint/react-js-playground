@@ -3,12 +3,20 @@ import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from './hoc/Layout/Layout';
+import AsyncComponent from './hoc/AsyncComponent/AsyncComponent';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
-import Checkout from './containers/Checkout/Checkout';
-import Orders from './containers/Orders/Orders';
-import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions';
+
+const ASYNC_AUTH = AsyncComponent(() => {
+  return import('./containers/Auth/Auth');
+});
+const ASYNC_CHECKOUT = AsyncComponent(() => {
+  return import('./containers/Checkout/Checkout');
+});
+const ASYNC_ORDERS = AsyncComponent(() => {
+  return import('./containers/Orders/Orders');
+});
 
 class App extends Component {
   componentDidMount() {
@@ -18,19 +26,20 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth" component={ASYNC_AUTH} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
     );
 
-    if (this.props.istAuthenticated) {
+    if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path="/" exact component={BurgerBuilder} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/orders" component={Orders} />
+          <Route path="/checkout" component={ASYNC_CHECKOUT} />
+          <Route path="/orders" component={ASYNC_ORDERS} />
           <Route path="/logout" component={Logout} />
+          <Route path="/auth" component={ASYNC_AUTH} />
+          <Route path="/" exact component={BurgerBuilder} />
           <Redirect to="/" />
         </Switch>
       );
@@ -46,7 +55,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    istAuthenticated: state.auth.token && state.auth.userId,
+    isAuthenticated: state.auth.token && state.auth.userId,
   };
 };
 

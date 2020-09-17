@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mapErrorCodeToMessage } from '../utility';
+import { mapErrorCodeToMessage } from '../../shared/utility';
 
 import * as actionTypes from './actionTypes';
 

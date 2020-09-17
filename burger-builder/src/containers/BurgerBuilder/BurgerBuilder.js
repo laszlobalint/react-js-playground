@@ -66,7 +66,7 @@ class BurgerBuilder extends Component {
         <Aux>
           <Burger ingredients={this.props.ingredients} />
           <BuildControls
-            isAuthenticated={this.isAuthenticated}
+            isAuthenticated={this.props.isAuthenticated}
             disabled={disabledInfo}
             totalPrice={this.props.totalPrice}
             purchasable={this.updatePurchaseState()}
