@@ -1,11 +1,12 @@
 import * as actionTypes from '../actions/actions';
-import { updateObject } from '../utility';
+import { updateObject } from '../../shared/utility';
 
 const initialState = {
   results: [],
 };
 
 const deleteResult = (state, action) => {
+  s;
   const updatedArray = state.results.filter((result) => result.id !== action.id);
   return updateObject(state, { results: updatedArray });
 };
