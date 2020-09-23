@@ -3,7 +3,7 @@ import axios from '../../axios';
 
 export const purchaseBurgerInit = () => {
   return {
-    type: actionTypes.PURCHASE_BURGET_INIT,
+    type: actionTypes.PURCHASE_BURGER_INIT,
   };
 };
 

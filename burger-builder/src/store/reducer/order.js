@@ -9,7 +9,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.PURCHASE_BURGET_INIT:
+    case actionTypes.PURCHASE_BURGER_INIT:
       return updateObject(state, { purchased: false });
     case actionTypes.PURCHASE_BURGER:
       return updateObject(state, { loading: true });
